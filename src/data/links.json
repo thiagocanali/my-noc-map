@@ -1,0 +1,32 @@
+[
+  {
+    "id": "link-001",
+    "cliente": "Empresa XPTO",
+    "operadora": "Vivo",
+    "designacao": "LINK-EMPRESA-001",
+    "velocidade": "300 Mbps",
+    "ip": "200.200.200.10",
+    "cnpj": "12.345.678/0001-99",
+    "endereco": "Rua das Flores, São Paulo - SP",
+    "latitude": -23.55052,
+    "longitude": -46.633308,
+    "status": "up",
+    "lastDownAt": null,
+    "events": []
+  },
+  {
+    "id": "link-002",
+    "cliente": "Transportes BR",
+    "operadora": "Claro",
+    "designacao": "LINK-TRANSP-002",
+    "velocidade": "100 Mbps",
+    "ip": "201.10.0.33",
+    "cnpj": "88.765.432/0001-00",
+    "endereco": "Av. Brasil, Rio de Janeiro - RJ",
+    "latitude": -22.906847,
+    "longitude": -43.172896,
+    "status": "up",
+    "lastDownAt": null,
+    "events": []
+  }
+]
