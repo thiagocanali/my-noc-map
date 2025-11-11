@@ -16,12 +16,31 @@ import ControlsBar from './components/ControlsBar.vue'
 
 const mapview = ref(null)
 
-function simulateDown() { mapview.value?.simulateRandomDown() }
-function simulateUp() { mapview.value?.simulateRandomUp() }
+function simulateDown() {
+  mapview.value?.simulateRandomDown()
+}
+
+function simulateUp() {
+  mapview.value?.simulateRandomUp()
+}
 </script>
 
 <style>
-.app-root { height: 100vh; display:flex; flex-direction:column; }
-.layout { display:flex; flex:1; }
-MapView, LogPanel { flex:1; }
+.app-root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #111827;
+  color: white;
+}
+
+.layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+MapView, LogPanel {
+  flex: 1;
+}
 </style>

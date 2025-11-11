@@ -1,54 +1,44 @@
 <template>
   <div class="log-panel">
-    <h3>📜 Logs de Eventos</h3>
-    <ul>
-      <li v-for="(event, index) in events" :key="index">
-        <strong>{{ event.datetime }}</strong> — 
-        {{ event.details }}
-      </li>
-    </ul>
+    <h3>Logs de Eventos</h3>
+    <div class="log-list">
+      <div v-for="log in logs" :key="log.datetime" class="log-item">
+        <b>{{ log.type.toUpperCase() }}</b> — {{ log.cliente }}
+        ({{ log.ip }}) — {{ formatDate(log.datetime) }}
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import logService from '../services/logService'
+import dayjs from 'dayjs'
 
-const events = ref([])
+const logs = ref([])
 
 onMounted(() => {
-  // carrega logs do serviço central
-  events.value = logService.events
+  logs.value = logService.getLogs()
+  window.addEventListener('storage', () => {
+    logs.value = logService.getLogs()
+  })
 })
+
+function formatDate(d) {
+  return dayjs(d).format('DD/MM/YYYY HH:mm:ss')
+}
 </script>
 
-<style scoped>
+<style>
 .log-panel {
-  background: #10141a;
-  color: #fff;
-  padding: 16px;
-  border-radius: 12px;
-  width: 400px;
-  max-height: 300px;
+  width: 30%;
+  background: #1e293b;
+  padding: 10px;
+  color: #e5e7eb;
   overflow-y: auto;
-  font-family: monospace;
-  font-size: 13px;
 }
-
-.log-panel h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  color: #00eaff;
-}
-
-.log-panel ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.log-panel li {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.log-item {
+  border-bottom: 1px solid #334155;
   padding: 4px 0;
 }
 </style>
